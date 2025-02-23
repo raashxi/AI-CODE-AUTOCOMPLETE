@@ -1,0 +1,224 @@
+# C++ Headers
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <queue>
+#include <stack>
+#include <deque>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <iterator>
+#include <memory>
+#include <functional>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <atomic>
+#include <chrono>
+#include <random>
+
+# C++ Keywords
+alignas alignof and and_eq asm auto bitand bitor bool break case catch char
+char8_t char16_t char32_t class compl concept const consteval constexpr constinit
+continue decltype default delete do double dynamic_cast else enum explicit
+export extern false float for friend goto if inline int long mutable namespace
+new noexcept not not_eq nullptr operator or or_eq private protected public
+register reinterpret_cast requires return short signed sizeof static static_assert
+static_cast struct switch synchronized template this thread_local throw true
+try typedef typeid typename union unsigned using virtual void volatile wchar_t
+while xor xor_eq
+
+# Standard Library Functions
+std::cin std::cout std::cerr std::endl std::fixed std::setprecision std::stoi std::stod
+std::stof std::to_string std::swap std::max std::min std::sort std::reverse std::find
+std::lower_bound std::upper_bound std::binary_search std::unique std::accumulate
+std::count std::fill std::copy std::rotate std::next_permutation std::prev_permutation
+std::push_heap std::pop_heap std::make_heap std::priority_queue std::stack std::queue
+std::deque std::map std::unordered_map std::set std::unordered_set std::pair
+std::make_pair std::tuple std::tie std::get std::function std::bind std::mem_fn
+std::thread std::mutex std::lock_guard std::unique_lock std::condition_variable
+std::future std::async std::chrono std::this_thread::sleep_for
+std::this_thread::sleep_until std::atomic std::shared_ptr std::unique_ptr
+
+# STL Containers
+std::vector<int> vec;
+vec.push_back(10);
+vec.pop_back();
+vec.size();
+vec.clear();
+
+std::map<int, std::string> myMap;
+myMap[1] = "one";
+myMap[2] = "two";
+
+std::unordered_map<std::string, int> freqMap;
+freqMap["apple"]++;
+freqMap["banana"]++;
+
+std::set<int> mySet;
+mySet.insert(10);
+mySet.insert(20);
+mySet.insert(30);
+
+std::priority_queue<int> pq;
+pq.push(5);
+pq.push(2);
+pq.push(8);
+pq.pop();
+
+# Common C++ Code Snippets
+std::cout << "Hello, World!" << std::endl;
+
+if (condition) {
+    // Code block
+}
+
+for (int i = 0; i < n; i++) {
+    // Code block
+}
+
+while (condition) {
+    // Code block
+}
+
+do {
+    // Code block
+} while (condition);
+
+switch (expression) {
+    case 1:
+        // Code block
+        break;
+    default:
+        // Default code block
+}
+
+# Object-Oriented Programming (OOP) Snippets
+class Person {
+public:
+    string name;
+    int age;
+    Person(string n, int a) : name(n), age(a) {}
+    void display() { std::cout << name << ", " << age << std::endl; }
+};
+
+class Car {
+private:
+    string brand;
+public:
+    Car(string b) : brand(b) {}
+    void show() { std::cout << "Brand: " << brand << std::endl; }
+};
+
+# Design Patterns
+// Singleton Pattern
+class Singleton {
+private:
+    static Singleton* instance;
+    Singleton() {} 
+public:
+    static Singleton* getInstance() {
+        if (!instance) instance = new Singleton();
+        return instance;
+    }
+};
+
+// Factory Pattern
+class Product {
+public:
+    virtual void use() = 0;
+};
+class ConcreteProduct : public Product {
+public:
+    void use() override { std::cout << "Using product" << std::endl; }
+};
+class ProductFactory {
+public:
+    static Product* createProduct() {
+        return new ConcreteProduct();
+    }
+};
+
+# Multithreading & Concurrency
+void threadFunction() {
+    std::cout << "Thread running" << std::endl;
+}
+std::thread t1(threadFunction);
+t1.join();
+
+std::mutex mtx;
+std::lock_guard<std::mutex> lock(mtx);
+
+# File Handling
+std::ofstream outfile("output.txt");
+outfile << "Hello, File!" << std::endl;
+outfile.close();
+
+std::ifstream infile("input.txt");
+std::string line;
+while (std::getline(infile, line)) {
+    std::cout << line << std::endl;
+}
+infile.close();
+
+# Networking (Basic Socket Programming)
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+int sock = socket(AF_INET, SOCK_STREAM, 0);
+struct sockaddr_in server;
+server.sin_family = AF_INET;
+server.sin_port = htons(8080);
+connect(sock, (struct sockaddr*)&server, sizeof(server));
+send(sock, "Hello", 5, 0);
+close(sock);
+
+# System Calls & Process Management
+#include <unistd.h>
+pid_t pid = fork();
+if (pid == 0) {
+    std::cout << "Child Process" << std::endl;
+} else {
+    std::cout << "Parent Process" << std::endl;
+}
+
+# Memory Management
+int* ptr = new int(5);
+delete ptr;
+std::unique_ptr<int> smartPtr = std::make_unique<int>(10);
+
+# Random Number Generation
+std::random_device rd;
+std::mt19937 gen(rd());
+std::uniform_int_distribution<int> dist(1, 100);
+int randomNum = dist(gen);
+
+# Algorithm Implementations
+void bubbleSort(std::vector<int>& arr) {
+    for (size_t i = 0; i < arr.size(); i++) {
+        for (size_t j = 0; j < arr.size() - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                std::swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+int binarySearch(const std::vector<int>& arr, int target) {
+    int left = 0, right = arr.size() - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
